@@ -1,7 +1,7 @@
 package maths;
 
 /**
- * Ta klasa zawiera wszystkie potrzebne funckje do operacji na wektorach
+ * Ta klasa zawiera wszystkie potrzebne funckje do operacji na wektorach 2D
  * @author BARTOSZ
  * @see Vector3
  */
@@ -45,13 +45,13 @@ public class Vector2 {
     }
 
     /**
-     * Ta funkcja wykonuje operację iloczynu wektorowego
-     * @param vector2 drugi wektor w iloczynie wektorowym (kolejność tu nie ma znaczenia)
-     * @return zwraca wartość iloczynu wektorowego tego wektora i wektora z argumentu
+     * Ta funkcja wykonuje operację iloczynu skalarnego
+     * @param vector2 drugi wektor w iloczynie skalarnym (kolejność tu nie ma znaczenia)
+     * @return zwraca wartość iloczynu skalarnego tego wektora i wektora z argumentu
      */
     public float dot(Vector2 vector2) {
         return x* vector2.x+y* vector2.y;
-        /* iloczyn wektorowy: a dot b = ax*bx+ay*by+az*bz, tu nie mamy
+        /* iloczyn skalarny: a dot b = ax*bx+ay*by+az*bz, tu nie mamy
         * trzeciego kierunku z, więc po prostu ax*bx+ay*by*/
     }
 
@@ -61,10 +61,15 @@ public class Vector2 {
      * @return długość iloczynu wektorowego tego wektora z wektorem z argumentu
      */
     public float crossMg(Vector2 vector2) {
-        float v = this.dot(vector2) / (this.magnitude() * vector2.magnitude());
-        float theta = (float) Math.acos(v); // obliczamy kąt ze wzoru
-        return (float) (Math.sin(theta) * this.magnitude() * vector2.magnitude());
-        /* obliczamy DŁUGOŚĆ iloczynu wektorowego ze wzoru |a x b| = |a|*|b|*sin(theta), gdzie theta to kąt
-        * między wektorami */
+        return cross(vector2).magnitude();
+    }
+
+    /**
+     * Ta funkcja oblicza iloczyn wektorowy 2 dwuwymiarowych wektorów
+     * @param vector2 wektor z którym liczony jest iloczyn wektorowy (tu kolejność ma znaczenie, definicja iloczynu wektorowego)
+     * @return nowy trójwymiarowy wektor skierowany prostopadle do płaszczyzny, na której leżą wektory, czyli wzdłuż osi z
+     */
+    public Vector3 cross(Vector2 vector2) {
+        return new Vector3(0, 0, x*vector2.y-y* vector2.x); // definicja iloczynu wektorowego
     }
 }
