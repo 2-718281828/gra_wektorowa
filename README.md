@@ -23,5 +23,7 @@ zmainy na serwer to wtedy push, a pull request jak chcemy nasz branch
 połączyć z mainem i wtedy ktoś zaakceptuje to. Polecam ogarnąć
 jakiś tutorial do gita.
 
+Do nauki polecam Kanał o Wszystkim i RealTutsGML
+
 Komentarze i docs po polsku, 
 jak będą pytania to pisać.
