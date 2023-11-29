@@ -6,7 +6,7 @@ import util.Console;
 /**
  * Tymczasowa klasa przeznaczona do testowania klas z packagu maths
  *
- * @author Bartosz W
+ * @author Bartosz Węgrzyn
  */
 public class MathsTest {
     public void test() {

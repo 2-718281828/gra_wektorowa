@@ -3,7 +3,7 @@ package main;
 /**
  * W tej klasie są inicjalizowane najważniesze procesy
  *
- * @author BARTOSZ
+ * @author Bartosz Węgrzyn
  */
 public class Main {
     public static void main(String[] args) {

@@ -3,7 +3,7 @@ package maths;
 /**
  * Ta klasa zawiera wszystkie potrzebne funckje do operacji na wektorach 3D
  *
- * @author Bartosz W
+ * @author Bartosz Węgrzyn
  * @see Vector2
  */
 public class Vector3 {
@@ -15,7 +15,7 @@ public class Vector3 {
      * @param x składowa x wektora
      * @param y składowa y wektora
      * @param z składowa z wektora
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public Vector3(float x, float y, float z) {
         this.x = x;
@@ -26,7 +26,7 @@ public class Vector3 {
     /**
      * Wypisuje w konsoli wartości składowych tego wektora
      *
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public void print() {
         System.out.println("X: " + x + ", Y: " + y + ", Z: " + z);
@@ -36,7 +36,7 @@ public class Vector3 {
      * Ta funckja dodaje inny trójwymiarowy wektor do tego wektora
      *
      * @param vector3 dodawany wektor
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public void add(Vector3 vector3) {
         this.x += vector3.x;
@@ -48,7 +48,7 @@ public class Vector3 {
      * Ta funckja odejmuje inny trójwymiarowy wektor do tego wektora
      *
      * @param vector3 odejmowany wektor
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public void subtract(Vector3 vector3) {
         this.x -= vector3.x;
@@ -60,7 +60,7 @@ public class Vector3 {
      * Ta funckja mnoży każdą składową wektora przez skalar
      *
      * @param n skalar
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public void multiply(float n) {
         this.x *= n;
@@ -72,7 +72,7 @@ public class Vector3 {
      * Ta funkcja zwraca długość (moduł) wektora
      *
      * @return moduł tego wektora
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public float magnitude() {
         return (float) Math.sqrt(x * x + y * y + z * z);
@@ -83,7 +83,7 @@ public class Vector3 {
      *
      * @param vector3 drugi wektor w iloczynie skalarnym (kolejność tu nie ma znaczenia)
      * @return zwraca wartość iloczynu skalarnego tego wektora i wektora z argumentu
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public float dot(Vector3 vector3) {
         return x * vector3.x + y * vector3.y + z * vector3.z;
@@ -95,7 +95,7 @@ public class Vector3 {
      *
      * @param vector3 wektor z którym wykonujemy iloczyn wektorowy (tu kolejność nie ma znaczenia, ponieważ jest to sama długość, a nie wektor)
      * @return długość iloczynu wektorowego tego wektora z wektorem z argumentu
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public float crossMg(Vector3 vector3) {
         return cross(vector3).magnitude();
@@ -106,7 +106,7 @@ public class Vector3 {
      *
      * @param vector3 wektor z którym liczony jest iloczyn wektorowy (tu kolejność ma znaczenie, definicja iloczynu wektorowego)
      * @return nowy trójwymiarowy wektor skierowany prostopadle do płaszczyzny, na której leżą wektory
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public Vector3 cross(Vector3 vector3) {
         return new Vector3(y * vector3.z - z * vector3.y, x * vector3.z - z * vector3.x, y * vector3.z - z * vector3.y);

@@ -1,9 +1,11 @@
 package maths;
 
+import util.Console;
+
 /**
  * Ta klasa zawiera wszystkie operacje na macierzach wymiarów 2x2
  *
- * @author Bartosz W
+ * @author Bartosz Węgrzyn
  */
 public class Matrix2x2 {
     public float[][] data;
@@ -12,7 +14,7 @@ public class Matrix2x2 {
      * Konstruktor
      *
      * @param data tablica float 2D z danymi do macierzy
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public Matrix2x2(float[][] data) {
         if (data.length != 2 && data[0].length != 2) {
@@ -26,10 +28,28 @@ public class Matrix2x2 {
     }
 
     /**
+     * Wypisuje wartości macierzy do konsoli
+     *
+     * @author Bartosz Węgrzyn
+     */
+    public void print() {
+        String msg = "[ ";
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                msg += data[i][j] + " ";
+            }
+            if (i != data.length - 1)
+                msg += "\n";
+        }
+        msg += "]";
+        Console.log(msg);
+    }
+
+    /**
      * Dodaje inną macierz do tej
      *
      * @param matrix2x2 macierz, którą dodajemy
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public void add(Matrix2x2 matrix2x2) {
         for (int i = 0; i < data.length; i++) {
@@ -43,7 +63,7 @@ public class Matrix2x2 {
      * Odejmuje inną macierz od tej
      *
      * @param matrix2x2 macierz, którą odejmujemy
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public void subtract(Matrix2x2 matrix2x2) {
         for (int i = 0; i < data.length; i++) {
@@ -58,7 +78,7 @@ public class Matrix2x2 {
      *
      * @param matrix2x2 macierz razy którą mnożymy
      * @return wynik mnożenia, nowa macierz 2x2
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public Matrix2x2 mulitply(Matrix2x2 matrix2x2) {
         float[][] result = new float[data.length][data[0].length];
@@ -73,7 +93,7 @@ public class Matrix2x2 {
      * Oblicza wyznacznik macierzy 2x2
      *
      * @return wyznacznik tej macierzy
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public float det() {
         float det = data[0][0] * data[1][1] - data[1][0] * data[0][1];

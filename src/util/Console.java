@@ -3,7 +3,7 @@ package util;
 /**
  * Jedynym przeznaczeniem tej klasy jest funkcja log
  *
- * @author Bartosz W
+ * @author Bartosz Węgrzyn
  */
 public class Console {
 
@@ -11,7 +11,7 @@ public class Console {
      * Dzięki tej funkcji nie musisz już pisać System.out.println(str)
      *
      * @param message wiadomość do konsoli
-     * @author Bartosz W
+     * @author Bartosz Węgrzyn
      */
     public static void log(String message) {
         System.out.println(message);
