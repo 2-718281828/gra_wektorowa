@@ -25,5 +25,6 @@ jakiś tutorial do gita.
 
 Do nauki polecam Kanał o Wszystkim i RealTutsGML
 
-Komentarze i docs po polsku, 
+Komentarze i docs po polsku (podpisujemy się w docs
+@author i imię i nazwisko), 
 jak będą pytania to pisać.

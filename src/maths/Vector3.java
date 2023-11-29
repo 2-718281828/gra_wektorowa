@@ -10,7 +10,7 @@ public class Vector3 {
     public float x, y, z;
 
     /**
-     * Ten konstruktor tworzy nowy obiekt Vector3
+     * Konstruktor
      *
      * @param x składowa x wektora
      * @param y składowa y wektora
