@@ -6,23 +6,23 @@ package maths;
  * @author Bartosz W
  */
 public class Matrix2x2 {
-    public float a1, a2, b1, b2; // a - wiersze, b - kolumny
+    public float[][] data;
 
     /**
-     * Konstruktor <br>
-     * W parametrach litera oznacza wiersz, cyfra kolumnę
+     * Konstruktor
      *
-     * @param a1
-     * @param a2
-     * @param b1
-     * @param b2
+     * @param data tablica float 2D z danymi do macierzy
      * @author Bartosz W
      */
-    public Matrix2x2(float a1, float a2, float b1, float b2) {
-        this.a1 = a1;
-        this.a2 = a2;
-        this.b1 = b1;
-        this.b2 = b2;
+    public Matrix2x2(float[][] data) {
+        if (data.length != 2 && data[0].length != 2) {
+            try {
+                throw new Exception("Złe wymiary macierzy");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        this.data = data;
     }
 
     /**
@@ -32,10 +32,11 @@ public class Matrix2x2 {
      * @author Bartosz W
      */
     public void add(Matrix2x2 matrix2x2) {
-        this.a1 += matrix2x2.a1;
-        this.a2 += matrix2x2.a2;
-        this.b1 += matrix2x2.b1;
-        this.b2 += matrix2x2.b2;
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                data[i][j] += matrix2x2.data[i][j];
+            }
+        }
     }
 
     /**
@@ -45,29 +46,37 @@ public class Matrix2x2 {
      * @author Bartosz W
      */
     public void subtract(Matrix2x2 matrix2x2) {
-        this.a1 -= matrix2x2.a1;
-        this.a2 -= matrix2x2.a2;
-        this.b1 -= matrix2x2.b1;
-        this.b2 -= matrix2x2.b2;
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                data[i][j] -= matrix2x2.data[i][j];
+            }
+        }
     }
 
     /**
      * Mnoży tę oraz inną macierz 2x2
+     *
      * @param matrix2x2 macierz razy którą mnożymy
      * @return wynik mnożenia, nowa macierz 2x2
      * @author Bartosz W
      */
     public Matrix2x2 mulitply(Matrix2x2 matrix2x2) {
-        return new Matrix2x2(a1* matrix2x2.a1+a2* matrix2x2.b1, a1*matrix2x2.a2+a2* matrix2x2.b2,
-                b2* matrix2x2.b1+b1* matrix2x2.a1, b1* matrix2x2.a2+b2* matrix2x2.b2);
+        float[][] result = new float[data.length][data[0].length];
+        result[0][0] = data[0][0] * matrix2x2.data[0][0] + data[0][1] * matrix2x2.data[1][0];
+        result[0][1] = data[0][0] * matrix2x2.data[0][1] + data[0][1] * matrix2x2.data[1][1];
+        result[1][0] = data[1][0] * matrix2x2.data[0][0] + data[1][1] * matrix2x2.data[1][0];
+        result[1][0] = data[1][0] * matrix2x2.data[0][1] + data[1][1] * matrix2x2.data[1][1];
+        return new Matrix2x2(result);
     }
 
     /**
      * Oblicza wyznacznik macierzy 2x2
+     *
      * @return wyznacznik tej macierzy
      * @author Bartosz W
      */
     public float det() {
-        return a1*b2-a2*b1;
+        float det = data[0][0] * data[1][1] - data[1][0] * data[0][1];
+        return det;
     }
 }
