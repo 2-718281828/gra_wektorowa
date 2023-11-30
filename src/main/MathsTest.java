@@ -13,5 +13,7 @@ public class MathsTest {
         Vector2 v2a = new Vector2(10, -5);
         Vector2 v2b = new Vector2(-7, 3);
         (v2a.cross(v2b)).print();
+
+        // TODO: Testowanie macierzy
     }
 }
