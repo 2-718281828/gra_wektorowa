@@ -112,4 +112,23 @@ public class Vector3 {
         return new Vector3(y * vector3.z - z * vector3.y, z * vector3.x - x * vector3.z, x * vector3.y - y * vector3.x);
         // definicja iloczynu wektorowego
     }
+
+    /**
+     * Mnoży ten wektor przez macierz 3x3
+     * @param matrix3x3 macierz, przez którą mnożymy
+     * @return nowy wektor będący wynikiem tej operacji
+     * @author Bartosz Węgrzyn
+     */
+    public Vector3 multiply(Matrix3x3 matrix3x3) {
+        float[] results = new float[]{0, 0, 0};
+        float[] values = new float[]{x, y, z};
+        for (int i = 0; i < 3; i++) {
+            float sum = 0;
+            for (int j = 0; j < 3; j++) {
+                sum += matrix3x3.data[i][j]*values[j];
+            }
+            results[i] = sum;
+        }
+        return new Vector3(results[0], results[1], results[2]);
+    }
 }
