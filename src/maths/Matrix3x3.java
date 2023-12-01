@@ -118,15 +118,58 @@ public class Matrix3x3 {
     }
 
     /**
+     * Oblicza minor tej macierzy
+     * @param i "skreślany" rząd
+     * @param j "skreślana" kolumna
+     * @return minor
+     * @author Bartosz Węgrzyn
+     */
+    public Matrix2x2 minor(int i, int j) {
+        float result[][] = new float[2][2];
+        int x = 0, y = 0;
+        for (int a = 0; a < data.length; a++) {
+            if (a == i)
+                continue;
+            for (int b = 0; b < data[0].length; b++) {
+                if (b == j)
+                    continue;
+                result[x][y] = data[a][b];
+                y++;
+            }
+            y = 0;
+            x++;
+        }
+        return new Matrix2x2(result);
+    }
+
+    /**
      * Oblicza wyznacznik macierzy 3x3
      *
      * @return wyznacznik tej macierzy
      * @author Bartosz Węgrzyn
      */
     public float det() {
-        float det = data[0][0] * new Matrix2x2(new float[][]{{data[1][1], data[1][2]},{data[2][1],data[2][2]}}).det();
-        det -= data[0][1] * new Matrix2x2(new float[][]{{data[1][0], data[1][2]},{data[2][0],data[2][2]}}).det();
-        det += data[0][2] * new Matrix2x2(new float[][]{{data[1][0], data[1][1]},{data[2][0],data[2][1]}}).det();
+        float det = data[0][0] * minor(0, 0).det();
+        det -= data[0][1] * minor(0, 1).det();
+        det += data[0][2] * minor(0, 2).det();
         return det;
     }
+
+    /**
+     * Oblicza macierz odwrotną do tej macierzy
+     * @return macierz odwrotna
+     * @author Bartosz Węgrzyn
+     */
+    public Matrix3x3 inverse() {
+        float result[][] = new float[data.length][data[0].length];
+        float det = det();
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                result[i][j] = (float) (Math.pow(-1, i + j)*minor(j, i).det()/det());
+            }
+        }
+        return new Matrix3x3(result);
+    }
+
+
 }

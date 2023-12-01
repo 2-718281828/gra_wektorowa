@@ -15,6 +15,6 @@ public class MathsTest {
     public void test() {
         Vector3 v3a = new Vector3(6, -5, 3);
         Matrix3x3 m1 = new Matrix3x3(new float[][]{{10, -7, 12}, {-13, 5, 4}, {-5, 3, -15}});
-        (v3a.multiply(m1)).print();
+        (m1.inverse()).print();
     }
 }

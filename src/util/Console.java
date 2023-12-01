@@ -13,7 +13,7 @@ public class Console {
      * @param message wiadomość do konsoli
      * @author Bartosz Węgrzyn
      */
-    public static void log(String message) {
+    public static void log(Object message) {
         System.out.println(message);
     }
 }

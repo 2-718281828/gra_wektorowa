@@ -4,7 +4,6 @@ package maths;
  * Ta klasa zawiera wszystkie potrzebne funckje do operacji na wektorach 3D
  *
  * @author Bartosz Węgrzyn
- * @see Vector2
  */
 public class Vector3 {
     public float x, y, z;
