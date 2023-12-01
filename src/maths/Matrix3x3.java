@@ -171,5 +171,18 @@ public class Matrix3x3 {
         return new Matrix3x3(result);
     }
 
-
+    /**
+     * Transponuje tę macierz.
+     * @return macierz transponowana
+     * @author Bartosz Węgrzyn
+     */
+    public Matrix3x3 transpose() {
+        float result[][] = new float[data.length][data[0].length];
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                result[i][j] = data[j][i];
+            }
+        }
+        return new Matrix3x3(result);
+    }
 }
