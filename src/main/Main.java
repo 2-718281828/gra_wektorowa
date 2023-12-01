@@ -15,9 +15,9 @@ public class Main {
     public static final String TITLE = "Gra wektorowa";
 
     public static void main(String[] args) {
-        Renderer renderer = new Renderer();
+        Renderer renderer = new RendererTest(new Vector2(WIDTH, HEIGHT));
         Window window = new Window(new Vector2(WIDTH, HEIGHT), TITLE, renderer);
-        LogicTest lt = new LogicTest();
+        LogicTest lt = new LogicTest((RendererTest) renderer);
         Engine engine = new Engine(renderer, lt);
         engine.start();
     }

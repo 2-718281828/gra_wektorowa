@@ -23,6 +23,18 @@ public class Vector3 {
     }
 
     /**
+     * Konstruktor
+     *
+     * @param vector3 wektor, którego dane chcemy skopiować
+     * @author Bartosz Węgrzyn
+     */
+    public Vector3(Vector3 vector3) {
+        this.x = vector3.x;
+        this.y = vector3.y;
+        this.z = vector3.z;
+    }
+
+    /**
      * Wypisuje w konsoli wartości składowych tego wektora
      *
      * @author Bartosz Węgrzyn
@@ -114,6 +126,7 @@ public class Vector3 {
 
     /**
      * Mnoży ten wektor przez macierz 3x3
+     *
      * @param matrix3x3 macierz, przez którą mnożymy
      * @return nowy wektor będący wynikiem tej operacji
      * @author Bartosz Węgrzyn
@@ -124,7 +137,7 @@ public class Vector3 {
         for (int i = 0; i < 3; i++) {
             float sum = 0;
             for (int j = 0; j < 3; j++) {
-                sum += matrix3x3.data[i][j]*values[j];
+                sum += matrix3x3.data[i][j] * values[j];
             }
             results[i] = sum;
         }

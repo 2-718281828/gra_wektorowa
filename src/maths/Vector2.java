@@ -21,6 +21,17 @@ public class Vector2 {
     }
 
     /**
+     * Konstruktor
+     *
+     * @param vector2 wektor, którego dane chcemy skopiować
+     * @author Bartosz Węgrzyn
+     */
+    public Vector2(Vector2 vector2) {
+        this.x = vector2.x;
+        this.y = vector2.y;
+    }
+
+    /**
      * Wypisuje w konsoli wartości składowych tego wektora
      *
      * @author Bartosz Węgrzyn

@@ -7,7 +7,16 @@ import engine.Logic;
  * @author Bartosz Węgrzyn
  */
 public class LogicTest implements Logic {
-    public void update() {
 
+    RendererTest renderer;
+
+    public LogicTest(RendererTest renderer) {
+        this.renderer = renderer;
+    }
+
+    public void update() {
+        renderer.triangle.rotateRoll(0.01f);
+        renderer.triangle.rotatePitch(0.03f);
+        renderer.triangle.rotateYaw(0.008f);
     }
 }

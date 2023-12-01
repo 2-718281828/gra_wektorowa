@@ -22,7 +22,7 @@ public class Window {
      */
     public Window(Vector2 dimensions, String title, Canvas canvas) {
         JFrame frame = new JFrame(title);
-        frame.setPreferredSize(new Dimension((int) dimensions.x, (int) dimensions.y));
+        frame.setPreferredSize(new Dimension((int) dimensions.x + 10, (int) dimensions.y + 35));
         frame.setResizable(false);
         frame.pack();
         frame.setLocationRelativeTo(null);
