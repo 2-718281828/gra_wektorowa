@@ -74,13 +74,26 @@ public class Matrix3x3 {
     }
 
     /**
+     * Mnoży każdy element tej macierzy przez skalar
+     * @param n skalar
+     * @author Bartosz Węgrzyn
+     */
+    public void multiplyn(float n) {
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                data[i][j] *= n;
+            }
+        }
+    }
+
+    /**
      * Mnoży tę oraz inną macierz 3x3
      *
      * @param matrix3x3 macierz razy którą mnożymy
      * @return wynik mnożenia, nowa macierz 3x3
      * @author Bartosz Węgrzyn
      */
-    public Matrix3x3 mulitply(Matrix3x3 matrix3x3) {
+    public Matrix3x3 multiply(Matrix3x3 matrix3x3) {
         float[][] result = new float[data.length][data[0].length];
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[0].length; j++) {
@@ -92,6 +105,16 @@ public class Matrix3x3 {
             }
         }
         return new Matrix3x3(result);
+    }
+
+    /**
+     * Podnosi tę macierz do kwadratu
+     * @return druga potęga tej macierzy
+     * @author Bartosz Węgrzyn
+     */
+    public Matrix3x3 square() {
+        Matrix3x3 temp = new Matrix3x3(data);
+        return multiply(temp);
     }
 
     /**

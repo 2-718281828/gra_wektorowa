@@ -74,19 +74,47 @@ public class Matrix2x2 {
     }
 
     /**
+     * Mnoży każdy element tej macierzy przez skalar
+     * @param n skalar
+     * @author Bartosz Węgrzyn
+     */
+    public void multiplyn(float n) {
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                data[i][j] *= n;
+            }
+        }
+    }
+
+    /**
      * Mnoży tę oraz inną macierz 2x2
      *
      * @param matrix2x2 macierz razy którą mnożymy
      * @return wynik mnożenia, nowa macierz 2x2
      * @author Bartosz Węgrzyn
      */
-    public Matrix2x2 mulitply(Matrix2x2 matrix2x2) {
+    public Matrix2x2 multiply(Matrix2x2 matrix2x2) {
         float[][] result = new float[data.length][data[0].length];
-        result[0][0] = data[0][0] * matrix2x2.data[0][0] + data[0][1] * matrix2x2.data[1][0];
-        result[0][1] = data[0][0] * matrix2x2.data[0][1] + data[0][1] * matrix2x2.data[1][1];
-        result[1][0] = data[1][0] * matrix2x2.data[0][0] + data[1][1] * matrix2x2.data[1][0];
-        result[1][0] = data[1][0] * matrix2x2.data[0][1] + data[1][1] * matrix2x2.data[1][1];
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                float sum = 0;
+                for (int k = 0; k < data.length; k++) {
+                    sum += data[i][k] * matrix2x2.data[k][j];
+                }
+                result[i][j] = sum;
+            }
+        }
         return new Matrix2x2(result);
+    }
+
+    /**
+     * Podnosi tę macierz do kwadratu
+     * @return druga potęga tej macierzy
+     * @author Bartosz Węgrzyn
+     */
+    public Matrix2x2 square() {
+        Matrix2x2 temp = new Matrix2x2(data);
+        return multiply(temp);
     }
 
     /**

@@ -109,7 +109,7 @@ public class Vector3 {
      * @author Bartosz Węgrzyn
      */
     public Vector3 cross(Vector3 vector3) {
-        return new Vector3(y * vector3.z - z * vector3.y, x * vector3.z - z * vector3.x, y * vector3.z - z * vector3.y);
+        return new Vector3(y * vector3.z - z * vector3.y, z * vector3.x - x * vector3.z, x * vector3.y - y * vector3.x);
         // definicja iloczynu wektorowego
     }
 }
