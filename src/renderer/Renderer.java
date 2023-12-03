@@ -14,6 +14,12 @@ import java.awt.image.BufferStrategy;
 public abstract class Renderer extends Canvas {
 
     public Vector2 dimensions;
+    /**
+     * Ustala czy widok ma być perspektywiczny<br>
+     * Domyślnie true
+     * @author Bartosz Węgrzyn
+     */
+    public boolean perspective = true;
 
     public Renderer(Vector2 dimensions) {
         this.dimensions = new Vector2(dimensions);

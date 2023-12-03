@@ -15,9 +15,13 @@ public class Main {
     public static final String TITLE = "Gra wektorowa";
 
     public static void main(String[] args) {
-        Renderer renderer = new RendererTest(new Vector2(WIDTH, HEIGHT));
+        Camera camera = new Camera();
+        Renderer renderer = new RendererTest(new Vector2(WIDTH, HEIGHT), camera);
         Window window = new Window(new Vector2(WIDTH, HEIGHT), TITLE, renderer);
-        LogicTest lt = new LogicTest((RendererTest) renderer);
+        renderer.addKeyListener(camera);
+        renderer.addMouseMotionListener(camera);
+        renderer.requestFocus();
+        LogicTest lt = new LogicTest((RendererTest) renderer, camera);
         Engine engine = new Engine(renderer, lt);
         engine.start();
     }

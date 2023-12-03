@@ -12,6 +12,8 @@ import java.awt.*;
  */
 public class Window {
 
+    public JFrame frame;
+
     /**
      * Konstruktor, tworzy nowe okno
      *
@@ -21,7 +23,7 @@ public class Window {
      * @author Bartosz Węgrzyn
      */
     public Window(Vector2 dimensions, String title, Canvas canvas) {
-        JFrame frame = new JFrame(title);
+        frame = new JFrame(title);
         frame.setPreferredSize(new Dimension((int) dimensions.x + 10, (int) dimensions.y + 35));
         frame.setResizable(false);
         frame.pack();
