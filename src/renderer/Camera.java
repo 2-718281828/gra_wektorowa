@@ -43,6 +43,7 @@ public class Camera implements KeyListener, MouseMotionListener {
     public float near = 1f, far = 100f;
     private Dimension screenSize;
     private Matrix3x3 rotationMatrix;
+    public Renderer renderer;
 
     public Camera() {
         position = new Vector3(0, 0, 0);
@@ -57,7 +58,15 @@ public class Camera implements KeyListener, MouseMotionListener {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     }
 
+    /**
+     * Aktualizuje położenie kamery.
+     * Funkcja nie jest uruchamiana jeżeli perspective w rendererze jest ustawione na false.
+     *
+     * @author Bartosz Węgrzyn
+     */
     public void update() {
+        if (!renderer.perspective)
+            return;
         robot.mouseMove(screenSize.width / 2, screenSize.height / 2);
         if (rotation.y >= Math.PI / 4) {
             rotation.y = (float) (Math.PI / 4);
@@ -96,6 +105,8 @@ public class Camera implements KeyListener, MouseMotionListener {
     }
 
     public void keyPressed(KeyEvent e) {
+        if (!renderer.perspective)
+            return;
         if (e.getKeyCode() == KeyEvent.VK_W) {
             keysPressed[0] = true;
         }
@@ -117,6 +128,8 @@ public class Camera implements KeyListener, MouseMotionListener {
     }
 
     public void keyReleased(KeyEvent e) {
+        if (!renderer.perspective)
+            return;
         if (e.getKeyCode() == KeyEvent.VK_W) {
             keysPressed[0] = false;
         }
@@ -142,8 +155,10 @@ public class Camera implements KeyListener, MouseMotionListener {
     }
 
     public void mouseMoved(MouseEvent e) {
+        if (!renderer.perspective)
+            return;
         rotation.x += (float) (e.getXOnScreen() - screenSize.width / 2) / 1250;
-        rotation.y += (float) (e.getYOnScreen() - screenSize.height / 2) / 5000;
+        rotation.y += (float) (e.getYOnScreen() - screenSize.height / 2) / 1250;
     }
 }
 

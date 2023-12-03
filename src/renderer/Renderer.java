@@ -20,9 +20,12 @@ public abstract class Renderer extends Canvas {
      * @author Bartosz Węgrzyn
      */
     public boolean perspective = true;
+    public Camera camera;
 
-    public Renderer(Vector2 dimensions) {
+    public Renderer(Vector2 dimensions, Camera camera) {
         this.dimensions = new Vector2(dimensions);
+        this.camera = camera;
+        camera.renderer = this;
     }
 
     /**

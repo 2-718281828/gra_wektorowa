@@ -20,9 +20,5 @@ public class LogicTest implements Logic {
 
     public void update() {
         camera.update();
-//        renderer.triangle1.translate(new Vector3(0f, 0f, 0.005f));
-//        renderer.triangle1.rotatePitch(0.01f);
-//        renderer.triangle2.translate(new Vector3(0f, 0f, 0.02f));
-//        renderer.triangle2.rotateRoll(0.01f);
     }
 }

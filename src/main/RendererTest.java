@@ -17,12 +17,10 @@ import java.awt.*;
 public class RendererTest extends Renderer {
 
     Triangles triangles;
-    Camera camera;
 
 
     public RendererTest(Vector2 dimensions, Camera camera) {
-        super(dimensions);
-        this.camera = camera;
+        super(dimensions, camera);
         triangles = new Triangles();
         Vector3 verticies[] = new Vector3[]{new Vector3(0, 0, 0),
                 new Vector3(1, 0, 0), new Vector3(0, 1, 0)};

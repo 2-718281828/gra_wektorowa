@@ -62,10 +62,13 @@ public class Triangle {
      */
     public void updateVerticies() {
         avgDistance = 0;
-        camera.position.multiply(-1f);
-        translate(camera.position);
-        camera.position.multiply(-1f);
-        rotateYaw(camera.rotation.x, true, null);
+        if (renderer.perspective) {
+            camera.position.multiply(-1f);
+            translate(camera.position);
+            camera.position.multiply(-1f);
+            rotateYaw(camera.rotation.x, true, null);
+            rotatePitch(camera.rotation.y, true, null);
+        }
         for (int i = 0; i < nVerticies; i++) {
             avgDistance += verticies[i].z;
             float scalingFactor = (float) 1 / verticies[i].z;
@@ -74,8 +77,11 @@ public class Triangle {
             xVerticies[i] = (int) (renderer.dimensions.x / 2 + (verticies[i].x * scalingFactor * renderer.dimensions.x) / 2);
             yVerticies[i] = (int) (renderer.dimensions.y / 2 + (verticies[i].y * scalingFactor * renderer.dimensions.y) / 2);
         }
-        rotateYaw(-camera.rotation.x, true, null);
-        translate(camera.position);
+        if (renderer.perspective) {
+            rotatePitch(-camera.rotation.y, true, null);
+            rotateYaw(-camera.rotation.x, true, null);
+            translate(camera.position);
+        }
         avgDistance /= nVerticies;
     }
 
@@ -87,8 +93,13 @@ public class Triangle {
      */
     public void render(Graphics2D graphics) {
         updateVerticies();
-        if (avgDistance > camera.near &&
-                avgDistance < camera.far) {
+        if (renderer.perspective) {
+            if (avgDistance > camera.near &&
+                    avgDistance < camera.far) {
+                graphics.setColor(color);
+                graphics.drawPolygon(xVerticies, yVerticies, nVerticies);
+            }
+        } else {
             graphics.setColor(color);
             graphics.drawPolygon(xVerticies, yVerticies, nVerticies);
         }
