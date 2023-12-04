@@ -6,6 +6,7 @@ import renderer.Camera;
 import renderer.Renderer;
 import renderer.Triangle;
 import renderer.Triangles;
+import util.Console;
 
 import java.awt.*;
 

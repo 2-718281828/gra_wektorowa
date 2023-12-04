@@ -6,6 +6,7 @@ import maths.Vector3;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 /**
  * Klasa zajmująca się renderowaniem
