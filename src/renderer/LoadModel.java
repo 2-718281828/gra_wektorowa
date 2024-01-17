@@ -56,6 +56,8 @@ public class LoadModel {
                         int b = fetchTriangleData.nextInt();
                         int c = fetchTriangleData.nextInt();
                         Vector3[] vx = new Vector3[3];
+                        Console.log(c);
+                        Console.log(b);
                         vx[0] = new Vector3(verticies.get(a));
                         vx[1] = new Vector3(verticies.get(b));
                         vx[2] = new Vector3(verticies.get(c));

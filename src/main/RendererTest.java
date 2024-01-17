@@ -21,7 +21,7 @@ public class RendererTest extends Renderer {
     public RendererTest(Vector2 dimensions, Camera camera) {
         super(dimensions, camera);
         triangles = new Triangles();
-        Model model = LoadModel.loadModel(new File("src/main/cube.model"), Color.white, camera.renderer, camera);
+        Model model = LoadModel.loadModel(new File("src/main/torus.model"), Color.white, camera.renderer, camera);
         for (int i = 0; i < model.triangles.size(); i++) {
             triangles.triangles.add(model.triangles.get(i));
         }
