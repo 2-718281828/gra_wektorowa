@@ -59,3 +59,5 @@ t 3 6 7
 Każdą linijkę rozpoczynamy literą. v oznacza punkt (vertex), t oznacza trójkąt (triangle).
 Po literze mamy 3 cyfry. Dla v mamy współżędne x, y, z punktu, dla t mamy numery punktów (taka jaka jest ich kolejność w pliku), z których powstanie trójkąt (kolejność ma znaczenie).
 Jakikolwiek tekst w pliku spowoduje błąd programu (nie obsłguje komentarzy). Kolor określa się w programie i modele całe mają jeden kolor.
+
+Skąd bierzemy pliki .model??? Mamy plik .obj np. z blendera. Kopiujemy wszystko co jest w tym pliku gdzie linijka zaczyna się na v i dajemy do pliku .model. Potem kopiujemy wszystko co ma f i dajemy do programu (będzie w innym repo) i on nam daje nowy plik. Kopiujemy zawartość tego pliku i wklejamy do pliku .model. Mamy gotowy model.
