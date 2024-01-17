@@ -68,11 +68,11 @@ public class Camera implements KeyListener, MouseMotionListener {
         if (!renderer.perspective)
             return;
         robot.mouseMove(screenSize.width / 2, screenSize.height / 2);
-        if (rotation.y >= Math.PI / 4) {
-            rotation.y = (float) (Math.PI / 4);
+        if (rotation.y >= Math.PI / 2) {
+            rotation.y = (float) (Math.PI / 2);
         }
-        if (rotation.y <= -Math.PI / 4) {
-            rotation.y = (float) -(Math.PI / 4);
+        if (rotation.y <= -Math.PI / 2) {
+            rotation.y = (float) -(Math.PI / 2);
         }
         if (keysPressed[0]) {
             velocity.z = speed;
