@@ -28,3 +28,34 @@ Do nauki polecam Kanał o Wszystkim i RealTutsGML
 Komentarze i docs po polsku (podpisujemy się w docs
 @author i imię i nazwisko), 
 jak będą pytania to pisać.
+
+---------------------
+
+PLIKI .model
+
+Plik .model zawiera dane z modelem 3D. Ma on postać następującą (model sześcianu):
+```dtd
+v 1.000000 -1.000000 -1.000000
+v 1.000000 -1.000000 1.000000
+v -1.000000 -1.000000 1.000000
+v -1.000000 -1.000000 -1.000000
+v 1.000000 1.000000 -1.000000
+v 1.000000 1.000000 1.000000
+v -1.000000 1.000000 1.000000
+v -1.000000 1.000000 -1.000000
+t 0 1 2
+t 0 2 3
+t 4 5 6
+t 4 6 7
+t 0 7 4
+t 1 5 6
+t 1 6 2
+t 0 4 5
+t 0 5 1
+t 3 2 6
+t 3 6 7
+```
+
+Każdą linijkę rozpoczynamy literą. v oznacza punkt (vertex), t oznacza trójkąt (triangle).
+Po literze mamy 3 cyfry. Dla v mamy współżędne x, y, z punktu, dla t mamy numery punktów (taka jaka jest ich kolejność w pliku), z których powstanie trójkąt (kolejnośc ma znaczenie).
+Jakikolwiek tekst w pliku spowoduje błąd programu (nie obsłguje komentarzy). Kolor określa się w programie i modele całe mają jeden kolor.
