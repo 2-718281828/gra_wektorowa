@@ -22,7 +22,7 @@ public class RendererTest extends Renderer {
         super(dimensions, camera);
 	String classPath = getClass().getResource("").getPath();
 	triangles = new Triangles();
-        Model model = LoadModel.loadModel(new File(classPath+"/torus.model"), Color.white, camera.renderer, camera);
+        Model model = LoadModel.loadModel(new File(classPath+"/monkey.model"), Color.white, camera.renderer, camera);
         for (int i = 0; i < model.triangles.size(); i++) {
             triangles.triangles.add(model.triangles.get(i));
         }
