@@ -20,5 +20,6 @@ public class LogicTest implements Logic {
 
   public void update() {
     camera.update();
+    renderer.model.rotate(0, 0.01);
   }
 }

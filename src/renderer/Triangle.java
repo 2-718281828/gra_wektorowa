@@ -30,6 +30,7 @@ public class Triangle {
   int[] xVerticies = new int[nVerticies];
   int[] yVerticies = new int[nVerticies];
   public Vector3[] newVerticies = new Vector3[nVerticies];
+  public Vector3[] tempVerticies = new Vector3[nVerticies];
   /**
    * Kolor jest domyślnie biały
    *
@@ -50,6 +51,7 @@ public class Triangle {
     for (int i = 0; i < nVerticies; i++) {
       this.verticies[i] = new Vector3(verticies[i]);
       this.newVerticies[i] = new Vector3(verticies[i]);
+      this.tempVerticies[i] = new Vector3(verticies[i]);
     }
     this.renderer = renderer;
     this.camera = camera;
@@ -67,6 +69,12 @@ public class Triangle {
    */
   public void updateVerticies() {
     avgDistance = 0;
+    for (int i = 0; i < nVerticies; i++) {
+      tempVerticies[i].x = newVerticies[i].x;
+      tempVerticies[i].y = newVerticies[i].y;
+      tempVerticies[i].z = newVerticies[i].z;
+    }
+
     if (renderer.perspective) {
       camera.position.multiply(-1f);
       translate(camera.position);
@@ -86,9 +94,9 @@ public class Triangle {
     }
     if (renderer.perspective) {
       for (int i = 0; i < nVerticies; i++) {
-        newVerticies[i].x = verticies[i].x;
-        newVerticies[i].y = verticies[i].y;
-        newVerticies[i].z = verticies[i].z;
+        newVerticies[i].x = tempVerticies[i].x;
+        newVerticies[i].y = tempVerticies[i].y;
+        newVerticies[i].z = tempVerticies[i].z;
       }
     }
     avgDistance /= nVerticies;

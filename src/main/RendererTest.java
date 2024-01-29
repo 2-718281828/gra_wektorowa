@@ -15,12 +15,13 @@ import java.io.File;
 public class RendererTest extends Renderer {
 
   public Triangles triangles;
+  public Model model;
 
   public RendererTest(Vector2 dimensions, Camera camera) {
     super(dimensions, camera);
     String classPath = getClass().getResource("").getPath();
     triangles = new Triangles();
-    Model model = LoadModel.loadModel(new File(classPath + "/monkey.model"), Color.white, camera.renderer, camera);
+    model = LoadModel.loadModel(new File(classPath + "/monkey.model"), Color.white, camera.renderer, camera);
     for (int i = 0; i < model.triangles.size(); i++) {
       triangles.triangles.add(model.triangles.get(i));
     }
