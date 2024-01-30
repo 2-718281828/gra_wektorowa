@@ -43,11 +43,23 @@ public class Model {
   }
 
   /**
+   * Dodaje wszystkie trójkąty tego modelu do innej listy trójkątów
+   *
+   * @param triangles lista trójkątów
+   * @author Bartosz Węgrzyn
+   */
+  public void init(Triangles triangles) {
+    for (int i = 0; i < this.triangles.size(); i++) {
+      triangles.triangles.add(this.triangles.get(i));
+    }
+  }
+
+  /**
    * Obraca model wokół własnej osi.
    * 
-   * @param axis  - 0 - oś x, 1 - oś y, 2 - oś z
+   * @param axis  0 - oś x, 1 - oś y, 2 - oś z
    * @param angle kąt obrotu
-   * @authort Bartosz Węgrzyn
+   * @author Bartosz Węgrzyn
    */
   public void rotate(int axis, double angle) {
     for (int i = 0; i < triangles.size(); i++) {
@@ -57,6 +69,20 @@ public class Model {
         triangles.get(i).rotateYaw(angle, false, rotationAxis);
       } else if (axis == 2) {
         triangles.get(i).rotateRoll(angle, false, rotationAxis);
+      }
+    }
+  }
+
+  /**
+   * Przesuwa model o dany wektor.
+   * 
+   * @param displacement wektor przesunięcia
+   * @author Bartosz Węgrzyn
+   */
+  public void move(Vector3 displacement) {
+    for (int i = 0; i < triangles.size(); i++) {
+      for (int j = 0; j < 3; j++) {
+        triangles.get(i).verticies[j].add(displacement);
       }
     }
   }

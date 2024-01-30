@@ -1,10 +1,8 @@
 package renderer;
 
-import main.Main;
 import maths.Matrix3x3;
 import maths.Vector2;
 import maths.Vector3;
-import util.Console;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -46,6 +44,14 @@ public class Camera implements KeyListener, MouseMotionListener {
   private Dimension screenSize;
   private Matrix3x3 rotationMatrix;
   public Renderer renderer;
+  /**
+   * enableRotationPitch - domyślnie true
+   * enableRotationYaw - domyślnie true
+   * enableMovement - domyślnie true
+   * 
+   * @author Bartosz Węgrzyn
+   */
+  public boolean enableRotationPitch = true, enableRotationYaw = true, enableMovement = true;
 
   public Camera() {
     position = new Vector3(0, 0, 0);
@@ -100,7 +106,8 @@ public class Camera implements KeyListener, MouseMotionListener {
         { 0, 1, 0 },
         { (double) -Math.sin(-rotation.x), 0, (float) Math.cos(-rotation.x) }
     };
-    position.add(velocity.multiply(rotationMatrix));
+    if (enableMovement)
+      position.add(velocity.multiply(rotationMatrix));
   }
 
   public void keyTyped(KeyEvent e) {
@@ -160,7 +167,9 @@ public class Camera implements KeyListener, MouseMotionListener {
   public void mouseMoved(MouseEvent e) {
     if (!renderer.perspective)
       return;
-    rotation.x -= (double) (e.getXOnScreen() - screenSize.width / 2) / 1250;
-    rotation.y += (double) (e.getYOnScreen() - screenSize.height / 2) / 1250;
+    if (enableRotationPitch)
+      rotation.x -= (double) (e.getXOnScreen() - screenSize.width / 2) / 1250;
+    if (enableRotationYaw)
+      rotation.y += (double) (e.getYOnScreen() - screenSize.height / 2) / 1250;
   }
 }

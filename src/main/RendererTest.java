@@ -2,7 +2,6 @@ package main;
 
 import maths.Vector2;
 import renderer.*;
-import util.*;
 
 import java.awt.*;
 import java.io.File;
@@ -22,9 +21,7 @@ public class RendererTest extends Renderer {
     String classPath = getClass().getResource("").getPath();
     triangles = new Triangles();
     model = LoadModel.loadModel(new File(classPath + "/monkey.model"), Color.white, camera.renderer, camera);
-    for (int i = 0; i < model.triangles.size(); i++) {
-      triangles.triangles.add(model.triangles.get(i));
-    }
+    model.init(triangles);
   }
 
   public void render(Graphics2D graphics) {

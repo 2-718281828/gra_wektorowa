@@ -2,6 +2,7 @@ package main;
 
 import engine.Logic;
 import renderer.Camera;
+import maths.*;
 
 /**
  * Tymczasowa klasa do testowania logiki
@@ -20,6 +21,7 @@ public class LogicTest implements Logic {
 
   public void update() {
     camera.update();
-    renderer.model.rotate(0, 0.01);
+    renderer.model.rotate(2, 0.05);
+    renderer.model.move(new Vector3(0.05, 0.05, 0.05));
   }
 }

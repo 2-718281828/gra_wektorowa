@@ -29,7 +29,6 @@ public class Triangle {
   Camera camera;
   int[] xVerticies = new int[nVerticies];
   int[] yVerticies = new int[nVerticies];
-  public Vector3[] newVerticies = new Vector3[nVerticies];
   public Vector3[] tempVerticies = new Vector3[nVerticies];
   /**
    * Kolor jest domyślnie biały
@@ -50,7 +49,7 @@ public class Triangle {
   public Triangle(Vector3[] verticies, Renderer renderer, Camera camera) {
     for (int i = 0; i < nVerticies; i++) {
       this.verticies[i] = new Vector3(verticies[i]);
-      this.newVerticies[i] = new Vector3(verticies[i]);
+      this.verticies[i] = new Vector3(verticies[i]);
       this.tempVerticies[i] = new Vector3(verticies[i]);
     }
     this.renderer = renderer;
@@ -70,9 +69,9 @@ public class Triangle {
   public void updateVerticies() {
     avgDistance = 0;
     for (int i = 0; i < nVerticies; i++) {
-      tempVerticies[i].x = newVerticies[i].x;
-      tempVerticies[i].y = newVerticies[i].y;
-      tempVerticies[i].z = newVerticies[i].z;
+      tempVerticies[i].x = verticies[i].x;
+      tempVerticies[i].y = verticies[i].y;
+      tempVerticies[i].z = verticies[i].z;
     }
 
     if (renderer.perspective) {
@@ -83,20 +82,20 @@ public class Triangle {
       rotatePitch(camera.rotation.y, true, null);
     }
     for (int i = 0; i < nVerticies; i++) {
-      avgDistance += newVerticies[i].z;
-      double scalingFactor = (double) 1 / newVerticies[i].z;
+      avgDistance += verticies[i].z;
+      double scalingFactor = (double) 1 / verticies[i].z;
       if (!renderer.perspective)
         scalingFactor = 1;
       xVerticies[i] = (int) (renderer.dimensions.x / 2
-          + (newVerticies[i].x * scalingFactor * renderer.dimensions.x) / 2);
+          + (verticies[i].x * scalingFactor * renderer.dimensions.x) / 2);
       yVerticies[i] = (int) (renderer.dimensions.y / 2
-          + (newVerticies[i].y * scalingFactor * renderer.dimensions.y) / 2);
+          + (verticies[i].y * scalingFactor * renderer.dimensions.y) / 2);
     }
     if (renderer.perspective) {
       for (int i = 0; i < nVerticies; i++) {
-        newVerticies[i].x = tempVerticies[i].x;
-        newVerticies[i].y = tempVerticies[i].y;
-        newVerticies[i].z = tempVerticies[i].z;
+        verticies[i].x = tempVerticies[i].x;
+        verticies[i].y = tempVerticies[i].y;
+        verticies[i].z = tempVerticies[i].z;
       }
     }
     avgDistance /= nVerticies;
@@ -130,7 +129,7 @@ public class Triangle {
    */
   public void translate(Vector3 translationVector) {
     for (int i = 0; i < nVerticies; i++) {
-      newVerticies[i].add(translationVector);
+      verticies[i].add(translationVector);
     }
   }
 
@@ -155,7 +154,7 @@ public class Triangle {
     };
     Matrix3x3 pitchRotationMatrix = new Matrix3x3(pitchRotation);
     for (int i = 0; i < nVerticies; i++) {
-      newVerticies[i] = newVerticies[i].multiply(pitchRotationMatrix);
+      verticies[i] = verticies[i].multiply(pitchRotationMatrix);
     }
     if (!axis) {
       translationVector.multiply(-1);
@@ -184,7 +183,7 @@ public class Triangle {
     };
     Matrix3x3 yawRotationMatrix = new Matrix3x3(yawRotation);
     for (int i = 0; i < nVerticies; i++) {
-      newVerticies[i] = newVerticies[i].multiply(yawRotationMatrix);
+      verticies[i] = verticies[i].multiply(yawRotationMatrix);
     }
     if (!axis) {
       translationVector.multiply(-1);
@@ -213,7 +212,7 @@ public class Triangle {
     };
     Matrix3x3 rollRotationMatrix = new Matrix3x3(rollRotation);
     for (int i = 0; i < nVerticies; i++) {
-      newVerticies[i] = newVerticies[i].multiply(rollRotationMatrix);
+      verticies[i] = verticies[i].multiply(rollRotationMatrix);
     }
     if (!axis) {
       translationVector.multiply(-1);
