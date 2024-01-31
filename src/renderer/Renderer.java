@@ -1,6 +1,5 @@
 package renderer;
 
-import main.Main;
 import maths.Vector2;
 import maths.Vector3;
 
