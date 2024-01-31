@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import maths.*;
-import util.*;
 
 /**
  * Model 3D
@@ -26,6 +25,10 @@ public class Model {
   public Model(ArrayList<Triangle> triangles, Color color) {
     this.triangles = triangles;
     this.color = color;
+    updateVerticies();
+  }
+
+  public void updateVerticies() {
     double avgX = 0, avgY = 0, avgZ = 0;
     for (int i = 0; i < triangles.size(); i++) {
       for (int j = 0; j < 3; j++) {
@@ -50,6 +53,7 @@ public class Model {
    */
   public void init(Triangles triangles) {
     for (int i = 0; i < this.triangles.size(); i++) {
+      this.triangles.get(i).color = this.color;
       triangles.triangles.add(this.triangles.get(i));
     }
   }
@@ -85,5 +89,6 @@ public class Model {
         triangles.get(i).verticies[j].add(displacement);
       }
     }
+    updateVerticies();
   }
 }
