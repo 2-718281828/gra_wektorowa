@@ -101,4 +101,29 @@ public class MainRenderer extends Renderer {
    }
 }
 ```
+
+3) Klasa MainLogic
+
+   W klasie MainLogic musimy stworzyć konstruktor i funkcję update (dzieciczy to od interfejsu Logic). Chcemy mieć możliwość aktualizacji kamery, więc w konstruktorze jako argument dodajemy Camera:
+```java
+public class MainLogic implements Logic {
+
+   public Camera camera; // ten obiekt jest publiczny dla całej klasy i innych klas mających dostęp do tej klasy
+
+   public MainLogic(Camera camera) {
+      this.camera = camera; // this.camera odnosi się do kamery publicznej dla całej klasy, a camera jest dostępna tylko dla tego konstruktora, dlatego chcemy "upublicznić" kamerę, żeby móc z niej korzystać w innych funkcjach
+   }
+
+   public void logic() {
+      camera.update(); // aktualizacja kamery
+   }
+
+}
+```
+
+Teraz w MainRenderer, do inicjalizacji MainLogic musimy jako argument dać kamerę:
+```java
+MainLogic mainLogic = new MainLogic(camera);
+```
+
 Uruchamiając teraz program powinniśmy dostać model torusa, wokół którego możemy się poruszać.
