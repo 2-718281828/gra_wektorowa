@@ -124,7 +124,7 @@ public class MainLogic implements Logic {
       this.camera = camera; // this.camera odnosi się do kamery publicznej dla całej klasy, a camera jest dostępna tylko dla tego konstruktora, dlatego chcemy "upublicznić" kamerę, żeby móc z niej korzystać w innych funkcjach
    }
 
-   public void logic() {
+   public void update() {
       camera.update(); // aktualizacja kamery
    }
 
