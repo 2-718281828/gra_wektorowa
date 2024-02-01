@@ -135,6 +135,9 @@ public class Camera implements KeyListener, MouseMotionListener {
     if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
       keysPressed[5] = true;
     }
+    if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+      System.exit(0);
+    }
   }
 
   public void keyReleased(KeyEvent e) {
