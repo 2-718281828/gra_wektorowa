@@ -12,7 +12,9 @@ Pobieramy całe repo i programujemy w nim (możliwość edycji kodu)
 
 Jak używać?
 ----------------
-1) Wyświetlanie okna
+**1) Wyświetlanie okna**
+
+**Uwaga: zawsze sprawdźcie czy zaimportowaliście dobre klasy (np util.Console, a nie java.io.Console)**
 
 Tworzymy 3 pliki (klasy): Main.java MainRenderer.java MainLogic.java
 
@@ -48,19 +50,27 @@ public static void main(String[] args) {
    Window window = new Window(new Vector2(WIDTH, HEIGHT), TITLE, renderer);
 }
 ```
-Jeśli chcemy, abyśmy mogli poruszać się kamerą lub nią obracać (to nie to samo co poruszanie się graczem na ekranie, np, w asteroids), dodajemy linijki:
+Dodajemy linijki (ważne):
 ```java
 renderer.addKeyListener(camera); // poruszanie się klawiaturą
 renderer.addMouseMotionListener(camera); // obracanie się myszką
 renderer.requestFocus(); // okno jest przenoszone w systemie na pierwsze tło (ważne)
 ```
+Jeśli nie chcemy poruszania się kamerą:
+```java
+camera.enableRotationPitch = false; // obracanie się wokół osi x (góra - dół)
+camera.enableRotationYaw = false; // obracanie się wokół osi y (prawo - lewo)
+camera.enableMovement = false; // poruszanie się kamerą
+```
+Te wszystkie zmienne są domyślie ustawione jako true.
+
 Następnie inicjalizujemy naszą klasę MainLogic oraz Engine:
 ```java
 MainLogic mainLogic = new MainLogic(); // tutaj 60 razy na sekundę jest wykonywana logika
 Engine engine = new Engine(renderer, mainLogic); // tutaj jest pętla gry
 engine.start(); // uruchamiamy silnik
 ```
-2) Klasa MainRenderer
+**2) Klasa MainRenderer**
 
 W pierwszej kolejności tworzymy obiekt Triangles, który będzie obsługiwał renderowanie wszystkich trójkątów:
 ```java
@@ -102,7 +112,7 @@ public class MainRenderer extends Renderer {
 }
 ```
 
-3) Klasa MainLogic
+**3) Klasa MainLogic**
 
    W klasie MainLogic musimy stworzyć konstruktor i funkcję update (dzieciczy to od interfejsu Logic). Chcemy mieć możliwość aktualizacji kamery, więc w konstruktorze jako argument dodajemy Camera:
 ```java
@@ -126,4 +136,7 @@ Teraz w MainRenderer, do inicjalizacji MainLogic musimy jako argument dać kamer
 MainLogic mainLogic = new MainLogic(camera);
 ```
 
+Ostatecznie skopiujmy plik torus.model z tego repo do folderu z plikiem MainRenderer.java.
+
 Uruchamiając teraz program powinniśmy dostać model torusa, wokół którego możemy się poruszać.
+
