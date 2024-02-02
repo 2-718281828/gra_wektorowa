@@ -140,3 +140,119 @@ Ostatecznie skopiujmy plik torus.model z tego repo do folderu z plikiem MainRend
 
 Uruchamiając teraz program powinniśmy dostać model torusa, wokół którego możemy się poruszać.
 
+**4) Dodawanie obiektów**
+
+Chcąc stworzyć różne obiekty, np. przeciwników musimy stworzyć nową klasę dziedziczącą klasę Entity.
+Stwórzmy obiekty Monkey i Torus.
+```java
+public class Monkey extends Entity {
+
+   public Monkey(Model model, Vector3 position, EntityHandler entityHandler) {
+      super(model, position, entityHandler);
+   }
+
+   public void logic() {
+      // tutaj jest logika obiektu
+   }
+}
+```
+```java
+public class Torus extends Entity {
+
+   public Torus(Model model, Vector3 position, EntityHandler entityHandler) {
+      super(model, position, entityHandler);
+   }
+
+   public void logic() {
+      // tutaj jest logika obiektu
+   }
+}
+```
+
+Aby rozróżniać między obiektami stwórzmy enum o nazwie ID:
+```java
+public enum ID {
+   Monkey, Torus
+}
+```
+
+Teraz nadajmy naszym obiektom ID:
+```java
+public class Monkey extends Entity {
+
+   public ID id = ID.Monkey;
+
+   public Monkey(Model model, Vector3 position, EntityHandler entityHandler) {
+      super(model, position, entityHandler);
+   }
+
+   public void logic() {
+      // tutaj jest logika obiektu
+   }
+}
+```
+```java
+public class Torus extends Entity {
+
+   public ID id = ID.Torus;
+
+   public Torus(Model model, Vector3 position, EntityHandler entityHandler) {
+      super(model, position, entityHandler);
+   }
+
+   public void logic() {
+      // tutaj jest logika obiektu
+   }
+}
+```
+
+W MainLogic stwórzmy obiekt typu EntityHandler oraz obiekty Torus i Monkey, które dodajemy do listy obiektów w entityHandler:
+```java
+public class MainLogic implements Logic {
+
+   public Camera camera;
+   public EntityHanlder entityHandler;
+   String classPath = getClass().getResource("").getPath(); // ścieżka do modelów
+
+   public MainLogic(Camera camera) {
+      this.camera = camera;
+      entityHandler = new EntityHandler(); // ten obiekt zarządza wszystkimi obiektami w grze
+      entityHandler.entities.add(new Torus(LoadModel.loadModel(new File(classPath + "/torus.model"), Color.green, camera.renderer, camera), new Vector3(0, 0, 0), entityHandler);
+      // pierwszy argument to nowy model, który ładujemy, drugi to położenie początkowe obiektu, a trzeci to entityHandler
+      entityHandler.entities.add(new Monkey(LoadModel.loadModel(new File(classPath + "/monkey.model"), Color.green, camera.renderer, camera), new Vector3(3, -3, 1), entityHandler);
+   }
+
+   public void update() {
+      camera.update();
+      entityHandler.update();
+   }
+
+}
+```
+Aby wyrenderować modele, zainicjalizujmy je do listy triangles z MainRenderer (to trzeba robić za każdym razem, gdy obiekt jest tworzony):
+```java
+public class MainLogic implements Logic {
+
+   public Camera camera;
+   public EntityHanlder entityHandler;
+   String classPath = getClass().getResource("").getPath(); // ścieżka do modelów
+
+   public MainLogic(Camera camera) {
+      this.camera = camera;
+      entityHandler = new EntityHandler(); // ten obiekt zarządza wszystkimi obiektami w grze
+      entityHandler.entities.add(new Torus(LoadModel.loadModel(new File(classPath + "/torus.model"), Color.green, camera.renderer, camera), new Vector3(0, 0, 0), entityHandler);
+      // pierwszy argument to nowy model, który ładujemy, drugi to położenie początkowe obiektu, a trzeci to entityHandler
+      entityHandler.entities.add(new Monkey(LoadModel.loadModel(new File(classPath + "/monkey.model"), Color.green, camera.renderer, camera), new Vector3(3, -3, 1), entityHandler);
+      for (int i = 0; i < entityHandler.entities.size(); i++) {
+         entityHandler.entities.get(i).model.init(camera.renderer.triangles); // inicjalizujemy model każdego z obiektów
+      }
+   }
+
+   public void update() {
+      camera.update();
+      entityHandler.update();
+   }
+
+}
+```
+Program powinien pokazać model torusa i małpy.
