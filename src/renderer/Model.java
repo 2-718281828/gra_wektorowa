@@ -59,6 +59,18 @@ public class Model {
   }
 
   /**
+   * Usuwa wszystkie trójkąty tego modelu z innej listy trójkątów
+   *
+   * @param triangles lista trójkątów
+   * @author Bartosz Węgrzyn
+   */
+  public void remove(Triangles triangles) {
+    for (int i = 0; i < this.triangles.size(); i++) {
+      triangles.triangles.remove(this.triangles.get(i));
+    }
+  }
+
+  /**
    * Obraca model wokół własnej osi.
    * 
    * @param axis  0 - oś x, 1 - oś y, 2 - oś z
