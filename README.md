@@ -256,3 +256,43 @@ public class MainLogic implements Logic {
 }
 ```
 Program powinien pokazać model torusa i małpy.
+
+**5) Kolizje**
+
+Każdy obiekt dziedziczący Entity ma hitbox w postaci najmniejszego sześcianu opisanego na nim. Aby sprawdzić kolizje:
+```java
+public class Torus extends Entity {
+
+   public ID id = ID.Torus;
+
+   public Torus(Model model, Vector3 position, EntityHandler entityHandler) {
+      super(model, position, entityHandler);
+   }
+
+   public void logic() {
+      // iterujemy po wszystkich obiektach w liście entity w entityHanlderze, sprawdzamy czy nie są tym obiektem (wtedy zawsze by było true), sprawdzamy ich id
+      for (int i = 0; i < entityHandler.entities.size(); i++) {
+         if (entityHandler.entities.get(i) != this) {
+           if (collision(entityHandler.entities.get(i).hitbox))
+            if(entityHandler.entities.get(i).id==ID.Torus) {
+               Console.log("Kolizja z torusem!);
+            ]
+            if(entityHandler.entities.get(i).id==ID.Torus) {
+               Console.log("Kolizja z małpą!);
+            ]
+         }
+       }
+   }
+}
+```
+
+Aby sprawdzić działanie kodu możemy utworzyć kilka obiektów i dodać poruszanie się ich (np. w kółko, tak, żeby się co pewien czas zderzały). Aby dodać poruszanie w logic należy zmienić wartość wektora velocity np.
+```java
+velocity.x = 5; (obiekt będzie przemieszczał się z prędkością 5 px/tick)
+```
+A następnie dodać go do położenia
+```java
+position.add(velocity);
+```
+Polecam pobawić się tym kodem żeby załapać jak działa.
+
