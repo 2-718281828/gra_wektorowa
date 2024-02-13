@@ -45,6 +45,7 @@ public static void main(String[] args) {
 Inicjalizujemy teraz klasę Window, która wyświetli nasze okno.
 ```java
 public static void main(String[] args) {
+   Locale.setDefault(new Locale("en", "US")); // ustawiamy lokalizację na US, żeby si się floaty ładowały
    Camera camera = new Camera();
    Renderer renderer = new MainRenderer(new Vector2(WIDTH, HEIGHT), camera);
    Window window = new Window(new Vector2(WIDTH, HEIGHT), TITLE, renderer);
