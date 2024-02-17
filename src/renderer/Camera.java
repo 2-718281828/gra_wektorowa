@@ -170,9 +170,9 @@ public class Camera implements KeyListener, MouseMotionListener {
   public void mouseMoved(MouseEvent e) {
     if (!renderer.perspective)
       return;
-    if (enableRotationPitch)
-      rotation.x -= (double) (e.getXOnScreen() - screenSize.width / 2) / 1250;
     if (enableRotationYaw)
+      rotation.x -= (double) (e.getXOnScreen() - screenSize.width / 2) / 1250;
+    if (enableRotationPitch)
       rotation.y += (double) (e.getYOnScreen() - screenSize.height / 2) / 1250;
   }
 }
