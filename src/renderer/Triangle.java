@@ -111,7 +111,6 @@ public class Triangle {
    * @author Bartosz Węgrzyn
    */
   public void render(Graphics2D graphics) {
-	double lastTime = System.nanoTime();
     updateVerticies();
     if (renderer.perspective) {
 	    for (int i = 0; i < 3; i++) {
@@ -124,7 +123,6 @@ public class Triangle {
       graphics.setColor(color);
       graphics.drawPolygon(xVerticies, yVerticies, nVerticies);
     }
-    Console.log(System.nanoTime()-lastTime);
   }
 
   /**

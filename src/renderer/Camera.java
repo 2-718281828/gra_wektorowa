@@ -48,10 +48,11 @@ public class Camera implements KeyListener, MouseMotionListener {
    * enableRotationPitch - domyślnie true
    * enableRotationYaw - domyślnie true
    * enableMovement - domyślnie true
+   * enableUpDown - domyslnie true
    * 
    * @author Bartosz Węgrzyn
    */
-  public boolean enableRotationPitch = true, enableRotationYaw = true, enableMovement = true;
+  public boolean enableRotationPitch = true, enableRotationYaw = true, enableMovement = true, enableUpDown = true;
 
   public Camera() {
     position = new Vector3(0, 0, 0);
@@ -95,12 +96,15 @@ public class Camera implements KeyListener, MouseMotionListener {
       velocity.x = speed;
     } else
       velocity.x = 0;
+    if (enableUpDown) {
     if (keysPressed[4]) {
       velocity.y = -speed;
     } else if (keysPressed[5]) {
       velocity.y = speed;
     } else
       velocity.y = 0;
+    } else 
+	    velocity.y = 0;
     rotationMatrix.data = new double[][] {
         { (double) Math.cos(-rotation.x), 0, (float) Math.sin(-rotation.x) },
         { 0, 1, 0 },
