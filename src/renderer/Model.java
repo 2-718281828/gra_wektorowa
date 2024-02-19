@@ -27,6 +27,19 @@ public class Model {
     this.color = color;
     updateVerticies();
   }
+	
+  public void scale(double scale) {
+	updateVerticies();
+	for (int i = 0; i < triangles.size(); i++) {
+		for (int j = 0; j < 3; j++) {
+			triangles.get(i).verticies[j].subtract(rotationAxis);
+			triangles.get(i).verticies[j].multiply(scale);
+			rotationAxis.multiply(scale);
+			triangles.get(i).verticies[j].add(rotationAxis);
+		}
+	}
+	updateVerticies();
+  }
 
   public void updateVerticies() {
     double avgX = 0, avgY = 0, avgZ = 0;
@@ -35,9 +48,7 @@ public class Model {
         avgX += triangles.get(i).verticies[j].x;
         avgY += triangles.get(i).verticies[j].y;
         avgZ += triangles.get(i).verticies[j].z;
-
       }
-
     }
     avgX /= (3 * triangles.size());
     avgY /= (3 * triangles.size());
@@ -87,6 +98,7 @@ public class Model {
         triangles.get(i).rotateRoll(angle, false, rotationAxis);
       }
     }
+    updateVerticies();
   }
 
   /**

@@ -20,8 +20,11 @@ public class RendererTest extends Renderer {
     super(dimensions, camera);
     String classPath = getClass().getResource("").getPath();
     triangles = new Triangles();
-    model1 = LoadModel.loadModel(new File(classPath + "/monkey.model"), Color.white, camera.renderer, camera);
-    model2 = LoadModel.loadModel(new File(classPath + "/monkey.model"), Color.red, camera.renderer, camera);
+    model1 = LoadModel.loadModel(new File(classPath + "/tank.model"), Color.white, camera.renderer, camera);
+    model2 = LoadModel.loadModel(new File(classPath + "/tank.model"), Color.red, camera.renderer, camera);
+    model1.scale(0.2);
+    model2.scale(0.2);
+    model1.rotate(2, 0.5*3.14159265);
     model1.init(triangles);
     model2.init(triangles);
   }

@@ -16,12 +16,12 @@ public class Main {
 
     public static void main(String[] args) {
         Camera camera = new Camera();
-        Renderer renderer = new RendererTest(new Vector2(WIDTH, HEIGHT), camera);
+        RendererTest renderer = new RendererTest(new Vector2(WIDTH, HEIGHT), camera);
         Window window = new Window(new Vector2(WIDTH, HEIGHT), TITLE, renderer);
         renderer.addKeyListener(camera);
         renderer.addMouseMotionListener(camera);
         renderer.requestFocus();
-        LogicTest lt = new LogicTest((RendererTest) renderer, camera);
+        LogicTest lt = new LogicTest(renderer, camera);
         Engine engine = new Engine(renderer, lt);
         engine.start();
     }

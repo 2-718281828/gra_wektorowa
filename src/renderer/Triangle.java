@@ -66,6 +66,7 @@ public class Triangle {
    *
    * @author Bartosz Węgrzyn
    */
+  double zs[] = new double[3];
   public void updateVerticies() {
     avgDistance = 0;
     for (int i = 0; i < nVerticies; i++) {
@@ -83,13 +84,15 @@ public class Triangle {
     }
     for (int i = 0; i < nVerticies; i++) {
       avgDistance += verticies[i].z;
+      zs[i]=verticies[i].z;
       double scalingFactor = (double) 1 / verticies[i].z;
       if (!renderer.perspective)
         scalingFactor = 1;
       xVerticies[i] = (int) (renderer.dimensions.x / 2
           + (verticies[i].x * scalingFactor * renderer.dimensions.x) / 2);
       yVerticies[i] = (int) (renderer.dimensions.y / 2
-          + (verticies[i].y * scalingFactor * renderer.dimensions.y) / 2);
+          + (verticies[i].y * scalingFactor * renderer.dimensions.x) / 2);
+      // w y jest x zeby obraz nie byl "zgnieciony" tylko rowny we wszystkich osiach, inaczej okno musialoby byc kwadratowe
     }
     if (renderer.perspective) {
       for (int i = 0; i < nVerticies; i++) {
@@ -108,17 +111,20 @@ public class Triangle {
    * @author Bartosz Węgrzyn
    */
   public void render(Graphics2D graphics) {
+	double lastTime = System.nanoTime();
     updateVerticies();
     if (renderer.perspective) {
-      if (avgDistance > camera.near &&
-          avgDistance < camera.far) {
+	    for (int i = 0; i < 3; i++) {
+		if (zs[i] < camera.near || zs[i] > camera.far)
+			return;
+	    }
         graphics.setColor(color);
         graphics.drawPolygon(xVerticies, yVerticies, nVerticies);
-      }
     } else {
       graphics.setColor(color);
       graphics.drawPolygon(xVerticies, yVerticies, nVerticies);
     }
+    Console.log(System.nanoTime()-lastTime);
   }
 
   /**

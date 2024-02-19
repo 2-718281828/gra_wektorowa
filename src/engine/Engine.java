@@ -54,6 +54,8 @@ public class Engine implements Runnable {
             while (accumulatedTime >= fixedDeltaTime) {
                 logic.update();
                 accumulatedTime -= fixedDeltaTime;
+		renderer.render();
+		FPS++;
             }
 
             if (System.currentTimeMillis() - timer >= 1000) {
@@ -62,8 +64,6 @@ public class Engine implements Runnable {
                 timer = System.currentTimeMillis();
             }
 
-            renderer.render();
-            FPS++;
         }
     }
 

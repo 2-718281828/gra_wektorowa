@@ -40,11 +40,11 @@ class TestEntity extends Entity {
   }
 
   public void logic() {
-    for (int i = 0; i < entityHandler.entities.size(); i++) {
-      if (entityHandler.entities.get(i) != this) {
-        if (collision(entityHandler.entities.get(i).hitbox))
-          Console.log("collision");
-      }
-    }
+//    for (int i = 0; i < entityHandler.entities.size(); i++) {
+//      if (entityHandler.entities.get(i) != this) {
+//        if (collision(entityHandler.entities.get(i).hitbox))
+//          Console.log("collision");
+//      }
+//    }
   }
 }
