@@ -91,7 +91,7 @@ public class Triangle {
       xVerticies[i] = (int) (renderer.dimensions.x / 2
           + (verticies[i].x * scalingFactor * renderer.dimensions.x) / 2);
       yVerticies[i] = (int) (renderer.dimensions.y / 2
-          + (verticies[i].y * scalingFactor * renderer.dimensions.x) / 2);
+          -(verticies[i].y * scalingFactor * renderer.dimensions.x) / 2);
       // w y jest x zeby obraz nie byl "zgnieciony" tylko rowny we wszystkich osiach, inaczej okno musialoby byc kwadratowe
     }
     if (renderer.perspective) {

@@ -134,10 +134,10 @@ public class Camera implements KeyListener, MouseMotionListener {
       keysPressed[3] = true;
     }
     if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-      keysPressed[4] = true;
+      keysPressed[5] = true;
     }
     if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-      keysPressed[5] = true;
+      keysPressed[4] = true;
     }
     if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
       System.exit(0);
@@ -160,10 +160,10 @@ public class Camera implements KeyListener, MouseMotionListener {
       keysPressed[3] = false;
     }
     if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-      keysPressed[4] = false;
+      keysPressed[5] = false;
     }
     if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
-      keysPressed[5] = false;
+      keysPressed[4] = false;
     }
   }
 
@@ -177,6 +177,6 @@ public class Camera implements KeyListener, MouseMotionListener {
     if (enableRotationYaw)
       rotation.x -= (double) (e.getXOnScreen() - screenSize.width / 2) / 1250;
     if (enableRotationPitch)
-      rotation.y += (double) (e.getYOnScreen() - screenSize.height / 2) / 1250;
+      rotation.y -= (double) (e.getYOnScreen() - screenSize.height / 2) / 1250;
   }
 }
