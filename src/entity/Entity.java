@@ -34,8 +34,12 @@ public abstract class Entity {
     velocity = new Vector3(0, 0, 0);
     rotation = 0;
     hitbox = new Matrix3x3(new double[3][3]);
+    model.updateVerticies();
+    Vector3 v3 = new Vector3(model.rotationAxis);
+    v3.multiply(-1);
+    model.move(v3);
     model.move(position);
-    updateHitbox();
+    model.updateVerticies();
   }
 
   /**
