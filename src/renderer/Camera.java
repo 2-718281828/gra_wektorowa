@@ -119,8 +119,6 @@ public class Camera implements KeyListener, MouseMotionListener {
   }
 
   public void keyPressed(KeyEvent e) {
-    if (!renderer.perspective)
-      return;
     if (e.getKeyCode() == KeyEvent.VK_W) {
       keysPressed[0] = true;
     }
@@ -145,8 +143,6 @@ public class Camera implements KeyListener, MouseMotionListener {
   }
 
   public void keyReleased(KeyEvent e) {
-    if (!renderer.perspective)
-      return;
     if (e.getKeyCode() == KeyEvent.VK_W) {
       keysPressed[0] = false;
     }
