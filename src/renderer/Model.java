@@ -45,12 +45,26 @@ public class Model {
 	updateVerticies();
 	for (int i = 0; i < triangles.size(); i++) {
 		for (int j = 0; j < 3; j++) {
-			if (j != axis)
-				continue;
-			triangles.get(i).verticies[j].subtract(rotationAxis);
-			triangles.get(i).verticies[j].multiply(scale);
-			rotationAxis.multiply(scale);
-			triangles.get(i).verticies[j].add(rotationAxis);
+			if (axis == 0) {
+			triangles.get(i).verticies[j].x -= rotationAxis.x;
+			triangles.get(i).verticies[j].x *= scale;
+			rotationAxis.x *= scale;
+			triangles.get(i).verticies[j].x += rotationAxis.x;
+			}
+
+			if (axis == 1) {
+			triangles.get(i).verticies[j].y -= rotationAxis.y;
+			triangles.get(i).verticies[j].y *= scale;
+			rotationAxis.y *= scale;
+			triangles.get(i).verticies[j].y += rotationAxis.y;
+			}
+			if (axis == 2) {
+			triangles.get(i).verticies[j].z -= rotationAxis.z;
+			triangles.get(i).verticies[j].z *= scale;
+			rotationAxis.z *= scale;
+			triangles.get(i).verticies[j].z += rotationAxis.z;
+			}
+
 		}
 	}
 	updateVerticies();
