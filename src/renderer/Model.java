@@ -41,6 +41,22 @@ public class Model {
 	updateVerticies();
   }
 
+  public void scale(int axis, double scale) {
+	updateVerticies();
+	for (int i = 0; i < triangles.size(); i++) {
+		for (int j = 0; j < 3; j++) {
+			if (j != axis)
+				continue;
+			triangles.get(i).verticies[j].subtract(rotationAxis);
+			triangles.get(i).verticies[j].multiply(scale);
+			rotationAxis.multiply(scale);
+			triangles.get(i).verticies[j].add(rotationAxis);
+		}
+	}
+	updateVerticies();
+  }
+
+
   public void updateVerticies() {
     double avgX = 0, avgY = 0, avgZ = 0;
     for (int i = 0; i < triangles.size(); i++) {
