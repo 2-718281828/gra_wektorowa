@@ -34,7 +34,6 @@ public class Model {
 		for (int j = 0; j < 3; j++) {
 			triangles.get(i).verticies[j].subtract(rotationAxis);
 			triangles.get(i).verticies[j].multiply(scale);
-			rotationAxis.multiply(scale);
 			triangles.get(i).verticies[j].add(rotationAxis);
 		}
 	}
