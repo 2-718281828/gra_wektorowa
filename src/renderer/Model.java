@@ -127,14 +127,14 @@ public class Model {
     updateVerticies();
   }
 
-public void rotate(int axis, Vector3 rotationAxis, double angle) {
+public void rotate(int axis, Vector3 rotationAxisA, double angle) {
 	for (int i = 0; i < triangles.size(); i++) {
       if (axis == 0) {
-        triangles.get(i).rotatePitch(angle, false, rotationAxis);
+        triangles.get(i).rotatePitch(angle, false, rotationAxisA);
       } else if (axis == 1) {
-        triangles.get(i).rotateYaw(angle, false, rotationAxis);
+        triangles.get(i).rotateYaw(angle, false, rotationAxisA);
       } else if (axis == 2) {
-        triangles.get(i).rotateRoll(angle, false, rotationAxis);
+        triangles.get(i).rotateRoll(angle, false, rotationAxisA);
       }
     }
     updateVerticies();
