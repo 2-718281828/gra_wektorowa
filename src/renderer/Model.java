@@ -48,20 +48,17 @@ public class Model {
 			if (axis == 0) {
 			triangles.get(i).verticies[j].x -= rotationAxis.x;
 			triangles.get(i).verticies[j].x *= scale;
-			rotationAxis.x *= scale;
 			triangles.get(i).verticies[j].x += rotationAxis.x;
 			}
 
 			if (axis == 1) {
 			triangles.get(i).verticies[j].y -= rotationAxis.y;
 			triangles.get(i).verticies[j].y *= scale;
-			rotationAxis.y *= scale;
 			triangles.get(i).verticies[j].y += rotationAxis.y;
 			}
 			if (axis == 2) {
 			triangles.get(i).verticies[j].z -= rotationAxis.z;
 			triangles.get(i).verticies[j].z *= scale;
-			rotationAxis.z *= scale;
 			triangles.get(i).verticies[j].z += rotationAxis.z;
 			}
 
@@ -130,6 +127,14 @@ public class Model {
     }
     updateVerticies();
   }
+
+public void rotate(Vector3 axis, double angle) {
+    for (int i = 0; i < triangles.size(); i++) {
+        triangles.get(i).rotatePitch(angle, true, axis);
+    }
+    updateVerticies();
+  }
+
 
   /**
    * Przesuwa model o dany wektor.
