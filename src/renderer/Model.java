@@ -130,7 +130,7 @@ public class Model {
 
 public void rotate(Vector3 axis, double angle) {
     for (int i = 0; i < triangles.size(); i++) {
-        triangles.get(i).rotatePitch(angle, true, axis);
+        triangles.get(i).rotatePitch(angle, false, axis);
     }
     updateVerticies();
   }
