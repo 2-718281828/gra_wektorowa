@@ -128,13 +128,18 @@ public class Model {
     updateVerticies();
   }
 
-public void rotate(Vector3 axis, double angle) {
-    for (int i = 0; i < triangles.size(); i++) {
-        triangles.get(i).rotatePitch(angle, false, axis);
+public void rotate(int axis, Vector3 rotationAxis, double angle) {
+	for (int i = 0; i < triangles.size(); i++) {
+      if (axis == 0) {
+        triangles.get(i).rotatePitch(angle, false, rotationAxis);
+      } else if (axis == 1) {
+        triangles.get(i).rotateYaw(angle, false, rotationAxis);
+      } else if (axis == 2) {
+        triangles.get(i).rotateRoll(angle, false, rotationAxis);
+      }
     }
     updateVerticies();
   }
-
 
   /**
    * Przesuwa model o dany wektor.
