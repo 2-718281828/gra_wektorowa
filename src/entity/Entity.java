@@ -49,7 +49,7 @@ public abstract class Entity {
    * 
    * @author Bartosz Węgrzyn
    */
-  void updateHitbox() {
+  public void updateHitbox() {
     xs = new double[3 * model.triangles.size()];
     ys = new double[3 * model.triangles.size()];
     zs = new double[3 * model.triangles.size()];
