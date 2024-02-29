@@ -64,12 +64,12 @@ public abstract class Entity {
     Arrays.sort(ys);
     Arrays.sort(zs);
     double[][] data = new double[3][3];
-    data[0][0] = xs[0] - 0.05;
-    data[0][1] = ys[0] - 0.05;
-    data[0][2] = zs[0] - 0.05;
-    data[1][0] = xs[3 * model.triangles.size() - 1] + 0.05;
-    data[1][1] = ys[3 * model.triangles.size() - 1] + 0.05;
-    data[1][2] = zs[3 * model.triangles.size() - 1] + 0.05;
+    data[0][0] = xs[0];
+    data[0][1] = ys[0];
+    data[0][2] = zs[0];
+    data[1][0] = xs[3 * model.triangles.size() - 1];
+    data[1][1] = ys[3 * model.triangles.size() - 1];
+    data[1][2] = zs[3 * model.triangles.size() - 1];
     for (int i = 0; i < 3; i++) {
       data[2][i] = 0;
     }
