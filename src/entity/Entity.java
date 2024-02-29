@@ -85,12 +85,15 @@ public abstract class Entity {
 
   public boolean collision(Matrix3x3 hitbox) {
     updateHitbox();
-    if ((this.hitbox.data[0][0] >= hitbox.data[0][0] && this.hitbox.data[0][0] <= hitbox.data[1][0])
-        || (this.hitbox.data[1][0] >= hitbox.data[0][0] && this.hitbox.data[1][0] <= hitbox.data[1][0])) {
-      if ((this.hitbox.data[0][1] >= hitbox.data[0][1] && this.hitbox.data[0][1] <= hitbox.data[1][1])
-          || (this.hitbox.data[1][1] >= hitbox.data[0][1] && this.hitbox.data[1][1] <= hitbox.data[1][1])) {
-        if ((this.hitbox.data[0][2] >= hitbox.data[0][2] && this.hitbox.data[0][2] <= hitbox.data[1][2])
-            || (this.hitbox.data[1][2] >= hitbox.data[0][2] && this.hitbox.data[1][2] <= hitbox.data[1][2])) {
+    if (((this.hitbox.data[0][0] >= hitbox.data[0][0] && this.hitbox.data[0][0] <= hitbox.data[1][0])
+        || (this.hitbox.data[1][0] >= hitbox.data[0][0] && this.hitbox.data[1][0] <= hitbox.data[1][0])) || ((hitbox.data[0][0] >= this.hitbox.data[0][0] && hitbox.data[0][0] <= this.hitbox.data[1][0])
+        || (hitbox.data[1][0] >= this.hitbox.data[0][0] && hitbox.data[1][0] <= this.hitbox.data[1][0]))) {
+      if (((this.hitbox.data[0][1] >= hitbox.data[0][1] && this.hitbox.data[0][1] <= hitbox.data[1][1])
+        || (this.hitbox.data[1][1] >= hitbox.data[0][1] && this.hitbox.data[1][1] <= hitbox.data[1][1])) || ((hitbox.data[0][1] >= this.hitbox.data[0][1] && hitbox.data[0][1] <= this.hitbox.data[1][1])
+        || (hitbox.data[1][1] >= this.hitbox.data[0][1] && hitbox.data[1][1] <= this.hitbox.data[1][1]))) {
+        if (((this.hitbox.data[0][2] >= hitbox.data[0][2] && this.hitbox.data[0][2] <= hitbox.data[1][2])
+        || (this.hitbox.data[1][2] >= hitbox.data[0][2] && this.hitbox.data[1][2] <= hitbox.data[1][2])) || ((hitbox.data[0][2] >= this.hitbox.data[0][2] && hitbox.data[0][2] <= this.hitbox.data[1][2])
+        || (hitbox.data[1][2] >= this.hitbox.data[0][2] && hitbox.data[1][2] <= this.hitbox.data[1][2]))) {
           return true;
         }
       }
