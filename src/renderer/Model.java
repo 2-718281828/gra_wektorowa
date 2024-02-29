@@ -28,6 +28,12 @@ public class Model {
     updateVerticies();
   }
 	
+  public void setColor(Color color) {
+	  this.color = color;
+	for (int i = 0; i < triangles.size(); i++) {
+		triangles.get(i).color = color;
+	}
+  }
   public void scale(double scale) {
 	updateVerticies();
 	for (int i = 0; i < triangles.size(); i++) {
